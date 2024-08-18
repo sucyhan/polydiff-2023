@@ -1,0 +1,31 @@
+<div class="ChatHistory">
+    <div *ngFor="let message of chatHistory; let index = index">
+        <p
+            class="ChatHistory-message"
+            [ngStyle]="{
+                'background-color': colorToStyle(message.backgroundColor),
+                color: colorToStyle(message.textColor)
+            }"
+        >
+            {{ message.time * 1000 | date: 'HH:mm:ss':'UTC+0' }} - {{ message.username }} : {{ message.message }}
+        </p>
+    </div>
+</div>
+<div class="ChatBox">
+    <div class="disabled" *ngIf="isSinglePlayer()">Désactivé</div>
+    <textarea
+        #chatInput
+        class="ChatBox-input"
+        type="text"
+        maxlength="200"
+        placeholder="Chat here"
+        [disabled]="isSinglePlayer()"
+        (keydown)="verifyKeyPress($event)"
+        tabindex="-1"
+    ></textarea>
+    <div class="ChatBox-controls">
+        <button tabindex="-1" class="ChatBox-button" (click)="sendMessage()" [disabled]="isSinglePlayer()">
+            <mat-icon>chat_bubble_outline</mat-icon>
+        </button>
+    </div>
+</div>

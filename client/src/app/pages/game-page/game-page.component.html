@@ -1,0 +1,13 @@
+<main>
+    <app-end-game-popup></app-end-game-popup>
+    <app-abandon-popup></app-abandon-popup>
+    <div class="BodyGame">
+        <app-top-bar class="TopBar"></app-top-bar>
+        <app-play-area #playArea></app-play-area>
+        <app-hints *ngIf="isSinglePlayer()"></app-hints>
+        <app-video-replay-bar #video *ngIf="show"></app-video-replay-bar>
+    </div>
+    <div class="SideGame">
+        <app-chat #chat></app-chat>
+    </div>
+</main>

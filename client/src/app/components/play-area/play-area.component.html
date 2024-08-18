@@ -1,0 +1,21 @@
+<div class="MainGame">
+    <div #original class="MultiCanvas">
+        <app-single-canvas
+            tabindex="-1"
+            *ngFor="let layer of layers; let zIndex = index"
+            [layer]="layer"
+            [id]="layer"
+            [index]="zIndex"
+        ></app-single-canvas>
+    </div>
+    <div class="MiddleDivider"></div>
+    <div #modified class="MultiCanvas">
+        <app-single-canvas
+            tabindex="-1"
+            *ngFor="let layer of layers; let zIndex = index"
+            [layer]="layer"
+            [id]="layer"
+            [index]="zIndex"
+        ></app-single-canvas>
+    </div>
+</div>

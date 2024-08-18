@@ -1,0 +1,19 @@
+<div class="popup-overlay" [ngClass]="{ show: showPopup, hidden: !showPopup }"></div>
+<div class="popup" [ngClass]="{ show: showPopup, hidden: !showPopup }">
+    <div class="flex-row">
+        <p id="welcome">Bienvenu dans le jeu {{ currentPlayer }}</p>
+        <mat-icon tabindex="-1" class="exit-button" (click)="close()">close</mat-icon>
+    </div>
+    <p class="info">Vous avez sélectionné le jeu: {{ gameName }}</p>
+    <div *ngIf="!newOpponent">
+        <p class="info">{{ waitingMessage }}</p>
+        <svg class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+            <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+        </svg>
+    </div>
+    <div *ngIf="newOpponent">
+        <p class="info">Ce joueur veut joindre votre partie: {{ opponentName }}</p>
+        <button tabindex="-1" class="button" (click)="accept()">Accepter</button>
+        <button tabindex="-1" class="button" (click)="reject()">Rejeter</button>
+    </div>
+</div>

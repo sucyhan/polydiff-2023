@@ -1,0 +1,11 @@
+<footer class="options-bar">
+    <mat-icon tabindex="-1" id="play" class="options" title="Play" (click)="playVideo()">play_arrow</mat-icon>
+    <mat-icon tabindex="-1" id="pause" class="options" title="Pause" (click)="pauseVideo()">pause</mat-icon>
+    <mat-icon tabindex="-1" id="replay" class="options" title="Replay" (click)="replayVideo()">replay</mat-icon>
+    <span class="speed">
+        <button #speed1 id="1x" class="button default" title="Vitesse 1x" (click)="replay1x()">1x</button>
+        <button #speed2 id="2x" class="button" title="Vitesse 2x" (click)="replay2x()">2x</button>
+        <button #speed4 id="4x" class="button" title="Vitesse 4x" (click)="replay4x()">4x</button>
+    </span>
+    <mat-progress-bar #Bar mode="determinate" [value]="time"></mat-progress-bar>
+</footer>

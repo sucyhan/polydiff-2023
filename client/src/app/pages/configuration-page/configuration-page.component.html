@@ -1,0 +1,34 @@
+<div class="container" id="config">
+    <app-general-header [pageTitle]="title" [icon]="icon"></app-general-header>
+    <div class="game-grid flex-row">
+        <button #Back class="button material-icons" (click)="changePreviousPage()">arrow_back</button>
+        <div class="game-cards-grid">
+            <div class="main-area" *ngFor="let currentImage of currentImages; let i = index">
+                <app-game-card
+                    #Games
+                    [imgSrc]="getImageFromGameType(currentImage.game)"
+                    [difficulty]="currentImage.game.difficulty"
+                    [gameName]="currentImage.game.title"
+                    [button1]="buttonReset"
+                    [button2]="buttonDelete"
+                    [id]="currentImage.game.id"
+                    [isSelection]="false"
+                    [index]="i"
+                    (deleteEvent)="deleteCard()"
+                ></app-game-card>
+            </div>
+        </div>
+
+        <div class="configOptions">
+            <app-constants></app-constants>
+            <div class="options-grid">
+                <button class="button exterior" routerLink="/create">Page de Création</button>
+                <button class="button exterior" (click)="openHistory()">Voir l'historique</button>
+                <button class="button exterior" (click)="deleteAllGames()">Supprimer les jeux</button>
+                <button class="button exterior" (click)="resetAllGames()">Réinitialiser les Scores</button>
+            </div>
+        </div>
+        <button #Next class="button material-icons" (click)="changeNextPage()">arrow_forward</button>
+    </div>
+</div>
+<app-history-popup [(showPopup)]="showHistoryPopup" [historyData]="historyData" [usedData]="historyData" (deleteHistory)="deleteHistory()"></app-history-popup>

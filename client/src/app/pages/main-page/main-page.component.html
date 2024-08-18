@@ -1,0 +1,18 @@
+<body class="container">
+    <app-general-header [pageTitle]="title" [icon]="icon"></app-general-header>
+    <div class="justified">
+        <img class="logo justified" src="{{ logoSrc }}" alt="Logo Projet" />
+        <section id="options" class="justified">
+            <p class="select">Sélectionner une des options suivantes :</p>
+            <div class="justified">
+                <button *ngFor="let option of options" class="button" [routerLink]="[option.link]">{{ option.name }}</button>
+            </div>
+        </section>
+        <footer class="footer-item">
+            <h4 class="team-name">Équipe {{ teamNumber }}</h4>
+            <p>
+                <span *ngFor="let teamMember of teamMembers">{{ teamMember }} </span>
+            </p>
+        </footer>
+    </div>
+</body>

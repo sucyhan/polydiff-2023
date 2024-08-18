@@ -1,0 +1,27 @@
+.MainGame {
+    padding: 1%;
+    display: flex;
+    flex-direction: row;
+    background-color: transparent;
+}
+
+.MiddleDivider {
+    height: 100%;
+    min-width: 10px;
+    background-color: black;
+}
+
+app-end-game-popup-solo {
+    display: flex;
+    flex-direction: row;
+}
+.MultiCanvas {
+    background-color: #a8bba4;
+    border-radius: 0;
+    width: 50%;
+    aspect-ratio: var(--default-width) / var(--default-height);
+}
+.SingleCanvas {
+    position: absolute;
+    aspect-ratio: var(--default-width) / var(--default-height);
+}

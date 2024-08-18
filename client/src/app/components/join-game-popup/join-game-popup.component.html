@@ -1,0 +1,17 @@
+<div class="popup-overlay" [ngClass]="{ show: showPopup, hidden: !showPopup }"></div>
+<div class="popup" [ngClass]="{ show: showPopup, hidden: !showPopup }">
+    <div class="flex-row">
+        <p id="welcome">Bienvenu dans le jeu: {{ currentPlayer }}</p>
+        <mat-icon tabindex="-1" class="exit-button" (click)="close()">close</mat-icon>
+    </div>
+    <div class="flex-row">
+        <div>
+            <div class="flex-column">
+                <p class="info">Vous avez sélectionné le jeu: {{ gameName }}</p>
+                <p class="info">{{ waitingMessage }}</p>
+            </div>
+            <button tabindex="-1" *ngIf="!isWaiting" class="button" (click)="close()">Retour</button>
+        </div>
+        <img class="img" src="{{ imgSrc }}" alt="Wait Image" />
+    </div>
+</div>

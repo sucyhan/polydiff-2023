@@ -1,0 +1,61 @@
+<h1 class="header-item">
+    <span></span>
+    <span class="title">Mode temps limité</span>
+    <span>
+        <a (click)="abandon()" class="button">
+            <i class="material-icons">{{ icon }}</i>
+        </a>
+    </span>
+</h1>
+<div class="WaitingArea">
+    <div class="image">
+        <img class="waiting-image" src="assets/waiting-frog.jpg" *ngIf="isWaiting" />
+        <img class="waiting-image" src="assets/kermit-choice.png" *ngIf="!isWaiting" />
+    </div>
+    <form class="popup-form" [formGroup]="usernameInputForm" *ngIf="!isWaiting" (ngSubmit)="verifyGamePossible()">
+        <label for="usernameInput">Mon nom est </label>
+        <input
+            tabindex="-1"
+            #usernameInput
+            type="text"
+            id="usernameInput"
+            maxlength="15"
+            formControlName="username"
+            placeholder="Entrez votre nom d'utilisateur ici"
+            pattern="[A-Za-z0-9]+"
+            (input)="verifyGamePossible()"
+            (keydown)="verifyKeyPress($event)"
+            (paste)="(false)"
+        />
+        <p class="top-message">Il y a actuellement {{ validIds.length }} jeux disponibles sur le site</p>
+        <p class="error-message" *ngFor="let message of errorMessages">{{ message }}</p>
+        <div class="Selection-button">
+            <button
+                tabindex="-1"
+                #SubmitButton
+                [ngClass]="verifyGamePossible() ? 'button-enabled' : 'button-disabled'"
+                type="submit"
+                [disabled]="verifyGamePossible() ? false : true"
+                (click)="modeSolo()"
+            >
+                Solo
+            </button>
+            <button
+                tabindex="-1"
+                #SubmitButton
+                [ngClass]="verifyGamePossible() ? 'button-enabled' : 'button-disabled'"
+                type="submit"
+                [disabled]="verifyGamePossible() ? false : true"
+                (click)="modeCoop()"
+            >
+                Coopératif
+            </button>
+        </div>
+    </form>
+    <div class="WaitingForPlayerText" *ngIf="isWaiting">
+        <p>Veuillez patienter pendant que nous vous trouvons un adversaire.</p>
+        <svg class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+            <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+        </svg>
+    </div>
+</div>

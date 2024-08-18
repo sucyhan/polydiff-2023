@@ -1,0 +1,14 @@
+<div class="main-div">
+    <p class="penalty-text">⏱ {{ penaltyTime }} secondes par indices</p>
+    <ul class="hints" *ngIf="isSinglePlayer()">
+        <li class="list-item">
+            <mat-icon #first title="Indice" (click)="getHint()" [ngClass]="{ show: !hideFirst, hidden: hideFirst }">star</mat-icon>
+        </li>
+        <li class="list-item">
+            <mat-icon #second title="Indice" (click)="getHint()" [ngClass]="{ show: !hideSecond, hidden: hideSecond }">star</mat-icon>
+        </li>
+        <li class="list-item">
+            <mat-icon #third title="Indice" (click)="getHint()" [ngClass]="{ show: !hideThird, hidden: hideThird }">star</mat-icon>
+        </li>
+    </ul>
+</div>

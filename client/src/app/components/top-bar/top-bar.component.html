@@ -1,0 +1,29 @@
+<div class="TopGame">
+    <div class="leftSide">
+        <p>Mode: {{ timerMode }}</p>
+        <p>{{ gameData.numberOfDifferences }} differences à trouver</p>
+    </div>
+    <div class="gameTitle">
+        <h1>{{ gameData.title }}</h1>
+        <p>{{ gameData.difficulty }}</p>
+    </div>
+    <div class="CounterContainer" *ngIf="!isTimed()">
+        <div class="diffCounter" *ngFor="let player of players">
+            <p id="Counter">{{ player.differencesFound.length }} / {{ ceil(gameData.numberOfDifferences / players.length) }}</p>
+            <p class="username" *ngIf="isMultiPlayer() && isClassic()">{{ player.username }}</p>
+        </div>
+    </div>
+    <div class="CounterContainer" *ngIf="isTimed()">
+        <div class="diffCounter">
+            <p id="Counter">{{ idPlayed.length - 1 }} jeux</p>
+        </div>
+    </div>
+    <div class="rightSide">
+        <p id="timer">{{ time * 1000 | date: 'HH:mm:ss':'UTC+0' }}</p>
+    </div>
+    <div class="rightSide">
+        <button tabindex="-1" type="button" id="quit-button" (click)="abandon()">
+            <mat-icon>exit_to_app</mat-icon>
+        </button>
+    </div>
+</div>

@@ -1,0 +1,114 @@
+mat-icon {
+    font-size: 200%;
+    padding-inline: 10%;
+    padding-block: 5%;
+}
+
+mat-icon:hover {
+    color: #2ea44f;
+}
+
+.tools {
+    border: 2px solid black;
+    background-color: #bfebb6;
+    width: 150%;
+    height: 40%;
+    align-content: center;
+    align-self: center;
+    justify-content: center;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    justify-content: center;
+    align-content: center;
+    margin-right: 1%;
+}
+
+.color {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid black;
+}
+
+#current {
+    width: 40px;
+    height: 40px;
+}
+
+#color-label {
+    font-size: 70%;
+    margin-bottom: 1%;
+}
+
+.selected {
+    color: #2ea44f;
+}
+
+.tools-option {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 115%;
+}
+
+.option {
+    width: 100%;
+    padding: 2%;
+    margin-inline: 4%;
+}
+
+#red {
+    background-color: #ff0000;
+}
+
+#orange {
+    background-color: #ffa500;
+}
+
+#blue {
+    background-color: #0000ff;
+}
+
+#green {
+    background-color: #008000;
+}
+
+#yellow {
+    background-color: #ffff00;
+}
+
+#purple {
+    background-color: #800080;
+}
+
+#black {
+    background-color: #000000;
+}
+
+#white {
+    background-color: #ffffff;
+}
+
+#pink {
+    background-color: pink;
+}

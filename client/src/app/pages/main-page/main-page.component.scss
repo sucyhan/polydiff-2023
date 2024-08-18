@@ -1,0 +1,68 @@
+.container {
+    background-color: #f6fff4;
+}
+
+.logo {
+    height: 230px;
+}
+
+.justified {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 47px;
+}
+
+.button {
+    margin-top: 10px;
+    text-align: center;
+    background-color: #bfebb6;
+    padding-inline: 30px;
+    padding-block: 10px;
+    box-shadow: rgba(27, 31, 35, 0.32) 0 5px 0;
+    border-radius: 6px;
+    font-size: 16px;
+    width: 80%;
+    font-weight: 520;
+    border: 2px solid rgb(27, 31, 35);
+
+}
+.button:hover {
+    background-color: #87d378;
+}
+
+.button:first-of-type {
+    padding-inline: 40px;
+}
+
+.team-name {
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+    color: black;
+    font-weight: bold;
+    font-size: large;
+}
+
+.footer-item {
+    text-align: center;
+    color: black;
+    background-color: #bfebb6;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+.options {
+    justify-content: center;
+    width: 20%;
+    min-width: min-content;
+    padding-bottom: 10%;
+}
+.select {
+    font-size: 16px;
+    font-weight: 500;
+    font-style:italic;
+}

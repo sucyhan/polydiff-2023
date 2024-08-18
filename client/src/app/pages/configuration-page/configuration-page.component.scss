@@ -1,0 +1,109 @@
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    column-width: 50%;
+}
+
+.options-grid {
+    margin-left: 20px;
+    display: grid;
+    grid-template-rows: auto auto auto;
+    grid-template-columns: auto auto;
+    grid-column-gap: 0px;
+    grid-row-gap: 5px;
+    align-items: center;
+    align-content: flex-start;
+}
+
+.game-cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+}
+
+.container {
+    background-color: #f6fff4;
+    height: 100%;
+}
+.configOptions {
+    width: 340px;
+}
+
+.constantBox {
+    border: 2px;
+    border-color: black;
+    border-style: solid;
+    margin: 10px;
+    width: 200px;
+    padding: 10px;
+}
+
+#section-title {
+    font-size: 130%;
+    font-weight: bold;
+    border-bottom: 1px;
+    border-bottom-style: solid;
+    padding: 5px;
+    background-color: #bfebb6;
+    text-align: center;
+}
+
+.constName {
+    font-weight: 500;
+    width: 150px;
+}
+
+.constTime {
+    padding-top: 10px;
+    width: 60px;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    column-gap: 5px;
+    align-items: center;
+    align-content: space-around;
+    flex: 50%;
+}
+
+.button {
+    background-color: #2ea44f;
+    border: 2px solid rgba(27, 31, 35, 0.15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, 0.32) 0 5px 0;
+    width: 120px;
+    height: 40px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    padding: 6px 14px;
+    margin-top: 8px;
+    position: relative;
+    text-justify: center;
+    align-items: center;
+    align-self: center;
+    text-justify: center;
+    justify-content: center;
+}
+
+.button:hover {
+    background-color: #2c974b;
+}
+
+.button:disabled {
+    background-color: #94d3a2;
+    border-color: rgba(27, 31, 35, 0.1);
+    color: rgba(255, 255, 255, 0.8);
+    cursor: default;
+}
+
+.exterior {
+    height: max-content;
+    width: 70%;
+}
+

@@ -1,0 +1,46 @@
+<div class="tools flex-row">
+    <div class="flex-column">
+        <mat-icon tabindex="-1" id="undo" title="Annuler" (click)="undo()">undo</mat-icon>
+        <mat-icon tabindex="-1" id="redo" title="Refaire" (click)="redo()">redo</mat-icon>
+    </div>
+    <div class="flex-column">
+        <mat-icon tabindex="-1" id="reset" title="Réinitialiser" (click)="reset()">refresh</mat-icon>
+        <mat-icon tabindex="-1" id="swap" title="Échanger" (click)="swap()">swap_horiz</mat-icon>
+    </div>
+
+    <div class="flex-column">
+        <div class="tools-option">
+            <mat-icon tabindex="-1" id="draw" class="option" title="Crayon" (click)="draw()">draw</mat-icon>
+            <mat-icon tabindex="-1" id="rectangle" class="option" title="Rectangle" (click)="createRectangle()">rectangle</mat-icon>
+            <mat-icon tabindex="-1" id="erase" class="option" title="Efface" (click)="erase()">auto_fix_high</mat-icon>
+        </div>
+        <mat-slider
+            tabindex="-1"
+            #MySlider
+            min="0.5"
+            max="15"
+            step="0.5"
+            value="selectedSize"
+            [(ngModel)]="selectedSize"
+            (valueChange)="sliderOnChange(MySlider.value)"
+        >
+            <input matSliderThumb />
+        </mat-slider>
+    </div>
+    <div class="flex-column">
+        <p id="color-label">Couleur sélectionnée</p>
+        <input tabindex="-1" #COLOR type="color" id="current" [(ngModel)]="selectedColor" (input)="colorOnChange(COLOR.value)" />
+    </div>
+
+    <div class="grid">
+        <div tabindex="-1" id="red" class="color" (click)="selectColor('red')"></div>
+        <div tabindex="-1" id="blue" class="color" (click)="selectColor('blue')"></div>
+        <div tabindex="-1" id="black" class="color" (click)="selectColor('black')"></div>
+        <div tabindex="-1" id="green" class="color" (click)="selectColor('green')"></div>
+        <div tabindex="-1" id="yellow" class="color" (click)="selectColor('yellow')"></div>
+        <div tabindex="-1" id="purple" class="color" (click)="selectColor('purple')"></div>
+        <div tabindex="-1" id="pink" class="color" (click)="selectColor('pink')"></div>
+        <div tabindex="-1" id="white" class="color" (click)="selectColor('white')"></div>
+        <div tabindex="-1" id="orange" class="color" (click)="selectColor('orange')"></div>
+    </div>
+</div>

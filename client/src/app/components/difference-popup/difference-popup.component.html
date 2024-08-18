@@ -1,0 +1,19 @@
+<div class="popup-overlay" [ngClass]="{ show: showPopup, hidden: !showPopup }"></div>
+<div class="popup" [ngClass]="{ show: showPopup, hidden: !showPopup }">
+    <div class="flex-row modal-info">
+        <div class="flex-column">
+            <div>
+                <span class="label">Nom du jeu: </span>
+                <input type="text" [(ngModel)]="gameName" maxlength="25" placeholder="Entrez le nom du jeu" />
+            </div>
+            <div class="flex-row">
+                <div class="label">Nombre de différences: {{ numberDiff }}</div>
+                <div class="label">Niveau de difficulté: {{ gameLevel }}</div>
+            </div>
+        </div>
+        <mat-icon tabindex="-1" class="modal-button" (click)="hideDifference()">{{ icon }}</mat-icon>
+    </div>
+    <p *ngIf="invalid" class="error-label">{{ invalidMessage }}</p>
+    <canvas #Difference class="img"></canvas>
+    <button #Save class="button" (click)="save()">Sauvegarder</button>
+</div>

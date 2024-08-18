@@ -1,0 +1,11 @@
+<div class="popup-overlay" [ngClass]="{ show: showPopup, hidden: !showPopup }"></div>
+<div class="popup" [ngClass]="{ show: showPopup, hidden: !showPopup }">
+    <div class="popup-content">
+        <p>{{ abandonMessage }}</p>
+        <div class="divider"></div>
+        <div class="buttonRow">
+            <button (click)="abandon()">Oui</button>
+            <button (click)="hideAbandon()">Annuler</button>
+        </div>
+    </div>
+</div>

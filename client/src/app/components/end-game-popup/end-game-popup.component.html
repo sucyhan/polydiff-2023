@@ -1,0 +1,77 @@
+<div class="popup-overlay" [ngClass]="{ show: showPopup, hidden: !showPopup }"></div>
+<div class="popup" [ngClass]="{ show: showPopup, hidden: !showPopup }">
+    <div class="popup-header">
+        <h2>Fin de la partie</h2>
+        <h3 *ngIf="isClassic()">La partie a été terminée en {{ time * 1000 | date: 'mm:ss' }}</h3>
+        <h3 *ngIf="isTimed() && !playedAllGames">Vous avez complété {{ idPlayed.length - 1 }} jeux</h3>
+        <h3 *ngIf="isTimed() && playedAllGames">Vous avez complété {{ idPlayed.length }} jeux</h3>
+    </div>
+    <div class="popup-content">
+        <div class="popup-content-left">
+            <h2 *ngIf="isClassic()">{{ gameData.title }}</h2>
+            <h2 *ngIf="isTimed()">{{ endTitle }}</h2>
+            <h3 *ngIf="isMultiPlayer() && isClassic()">Le vainqueur est {{ winnerUsername }}</h3>
+            <h3 *ngIf="isMultiPlayer() || isTimed()">{{ endMessage }}</h3>
+            <table *ngIf="isClassic()" class="placement-table">
+                <h3>Top 3</h3>
+                <tr>
+                    <th>Place</th>
+                    <th>Joueur</th>
+                    <th>Temps</th>
+                </tr>
+                <tr *ngFor="let result of leaderBoard | slice: 0:3; let index = index">
+                    <td>{{ index + 1 }}</td>
+                    <td>{{ result.name }}</td>
+                    <td>{{ result.time * 1000 | date: 'HH:mm:ss':'UTC+0' }}</td>
+                </tr>
+            </table>
+            <form *ngIf="isSinglePlayer() && isClassic()" class="popup-form" [formGroup]="usernameInputForm" (ngSubmit)="sendScore()">
+                <h3>Votre placement: {{ placementPosition }}</h3>
+                <input
+                    tabindex="-1"
+                    #usernameInput
+                    type="text"
+                    id="usernameInput"
+                    maxlength="15"
+                    formControlName="username"
+                    placeholder="Entrez votre nom d'utilisateur ici"
+                    pattern="[A-Za-z0-9]+"
+                    (input)="verifyUsername()"
+                    (keydown)="verifyKeyPress($event)"
+                    (paste)="(false)"
+                    [ngClass]="{ disabledInput: submittedTimeToServer }"
+                    [attr.disabled]="submittedTimeToServer ? true : null"
+                />
+                <button
+                    tabindex="-1"
+                    #SubmitButton
+                    [ngClass]="verifyUsername() ? 'submit-button-enabled' : 'submit-button-disabled'"
+                    type="submit"
+                    [attr.disabled]="submittedTimeToServer ? true : null"
+                >
+                    Soummettre mon score
+                </button>
+                <h1 [ngClass]="{ hidden: !showUsernameMessage }">{{ usernameMessage }}</h1>
+            </form>
+        </div>
+        <div class="popup-content-right">
+            <div class="img-background">
+                <img class="winner-image" src="{{ imgSrc }}" />
+            </div>
+            <div class="button-bar">
+                <button tabindex="-1" type="button" id="quit-button" (click)="leaveGame()">
+                    <div>
+                        <mat-icon>exit_to_app</mat-icon>
+                        <p>Quitter</p>
+                    </div>
+                </button>
+                <button tabindex="-1" type="button" id="replay-button" (click)="replayGame()" *ngIf="!isTimed()">
+                    <div>
+                        <mat-icon>replay</mat-icon>
+                        <p>Reprise</p>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

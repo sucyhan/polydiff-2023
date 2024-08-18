@@ -1,0 +1,30 @@
+<div #Card class="game-form">
+    <p class="justified flex-column">
+        <span class="title">{{ gameName }}</span>
+        <span class="difficulty-level">Niveau de difficulté: {{ difficulty }}</span>
+    </p>
+    <div class="form-container">
+        <div class="classement justified">
+            <span class="classement-title">Classement</span>
+            <div class="classement-grid">
+                <div class="numbers flex-column font">
+                    <h3>Top 3</h3>
+                    <span class="text" id="numbers" *ngFor="let user of usersSolo; let index = index">{{ index + 1 }}</span>
+                </div>
+                <div class="solo flex-column font">
+                    <h3>Solo</h3>
+                    <span class="text" id="solo" *ngFor="let user of usersSolo">{{ user.name }}- {{ user.time * 1000 | date: 'HH:mm:ss':'UTC+0' }}</span>
+                </div>
+                <div class="onevone flex-column font">
+                    <h3>1v1</h3>
+                    <span class="text" id="onevone" *ngFor="let user of users1v1">{{ user.name }}- {{ user.time * 1000 | date: 'HH:mm:ss':'UTC+0' }}</span>
+                </div>
+            </div>
+        </div>
+        <img src="{{ imgSrc }}" />
+    </div>
+    <div class="selection-buttons flex-row justified">
+        <button tabindex="-1" #Button1 class="button" title="Mode Solo" (click)="leftButtonBehavior()">{{ button1 }}</button>
+        <button tabindex="-1" #Button class="button" title="Mode 1v1" (click)="rightButtonBehavior()">{{ button2 }}</button>
+    </div>
+</div>

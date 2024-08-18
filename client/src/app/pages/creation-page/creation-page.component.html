@@ -1,0 +1,102 @@
+<div class="container">
+    <app-general-header [pageTitle]="creationHeader.TITLE" [icon]="creationHeader.ICON" [link]="creationHeader.LINK"></app-general-header>
+    <section class="flex-row">
+        <div class="options">
+            <span class="label">Rayon d'élargissement:</span>
+            <mat-radio-group aria-label="Rayon d'élargissement:" [(ngModel)]="selectedEnlargement">
+                <mat-radio-button *ngFor="let option of enlargeOptions" class="radio-button" [value]="option" (change)="disableSave()">{{
+                    option
+                }}</mat-radio-button>
+            </mat-radio-group>
+        </div>
+    </section>
+
+    <section class="flex-row">
+        <div class="img-options">
+            <div class="img-background">
+                <p>Arrière-plan</p>
+                <div class="img-upload">
+                    <input #imgOriginal class="input" type="file" accept="image/*" (change)="processImage($event, 'original')" />
+                    <mat-hint>Format bitmap (BMP) 24-bit de taille 640x480 pixels</mat-hint>
+                </div>
+                <button id="resetO" class="button img-select" title="Réinitialiser" (click)="reset(true)">
+                    <mat-icon>refresh</mat-icon>
+                </button>
+            </div>
+            <div class="img-front">
+                <p>Avant-plan</p>
+                <button id="resetO" class="button img-select" title="Réinitialiser" (click)="resetFront(true)">
+                    <mat-icon>refresh</mat-icon>
+                </button>
+                <button class="button img-select" title="Dupliquer" (click)="duplicate(true)">
+                    <mat-icon>content_copy</mat-icon>
+                </button>
+            </div>
+        </div>
+        <div class="img-section">
+            <span class="img-label">Image Originale</span>
+            <div class="canvas-section">
+                <canvas #Original class="img bot"></canvas>
+                <canvas #OriginalZ1 class="img mid"></canvas>
+                <canvas #OriginalZ2 class="img top"></canvas>
+            </div>
+        </div>
+        <div class="img-section">
+            <span class="img-label">Image Modifiée</span>
+            <div class="canvas-section">
+                <canvas #Modified class="img bot"></canvas>
+                <canvas #ModifiedZ1 class="img mid"></canvas>
+                <canvas #ModifiedZ2 class="img top"></canvas>
+            </div>
+        </div>
+        <div class="img-options">
+            <div class="img-background">
+                <p>Arrière-plan</p>
+                <div class="img-upload">
+                    <input #imgModified class="input" type="file" accept="image/*" (change)="processImage($event, 'modified')" />
+                    <mat-hint>Format bitmap (BMP) 24-bit de taille 640x480 pixels</mat-hint>
+                </div>
+                <button id="resetM" class="button img-select" title="Réinitialiser" (click)="reset(false)">
+                    <mat-icon>refresh</mat-icon>
+                </button>
+            </div>
+            <div class="img-front">
+                <p>Avant-plan</p>
+                <button id="resetM" class="button img-select" title="Réinitialiser" (click)="resetFront(false)">
+                    <mat-icon>refresh</mat-icon>
+                </button>
+                <button class="button img-select" title="Dupliquer" (click)="duplicate(false)">
+                    <mat-icon>content_copy</mat-icon>
+                </button>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <app-tool-box
+            #ToolBox
+            (radiusChanged)="onChangeRadius(ToolBox.selectedSize)"
+            (colorChanged)="onChangeColor(ToolBox.selectedColor)"
+            (selectRectangles)="selectRectangle()"
+            (selectDraw)="selectDraw()"
+            (selectEraser)="selectEraser()"
+            (undoEvent)="undo()"
+            (redoEvent)="redo()"
+            (resetEvent)="resetLayer()"
+            (swapEvent)="swap()"
+        ></app-tool-box>
+        <div class="double-upload">
+            <input #imgTwice class="input" type="file" accept="image/*" (change)="processImage($event, '')" />
+            <mat-hint>Format bitmap (BMP) 24-bit de taille 640x480 pixels</mat-hint>
+        </div>
+        <button id="validate" class="button" (click)="validate()">Valider</button>
+    </footer>
+</div>
+<app-difference-popup #diffPopup
+    [(showPopup)]="showPopup"
+    [numberDiff]="numberDiff"
+    [gameLevel]="gameLevel"
+    [invalid]="invalid"
+    [invalidMessage]="invalidMessage"
+    [(gameName)]="gameName"
+    (selectSave)="save()"
+></app-difference-popup>

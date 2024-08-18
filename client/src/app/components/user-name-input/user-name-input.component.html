@@ -1,0 +1,30 @@
+<div class="popup-overlay" [ngClass]="{ show: showPopup, hidden: !showPopup }"></div>
+<div class="popup" [ngClass]="{ show: showPopup, hidden: !showPopup }">
+    <form class="popup-form" [formGroup]="usernameInputForm" (ngSubmit)="sendUsername()">
+        <p for="usernameInput">{{ gameName }}</p>
+        <label for="usernameInput">Mon nom est {{ username }}</label>
+        <input
+            tabindex="-1"
+            #usernameInput
+            type="text"
+            id="usernameInput"
+            maxlength="15"
+            formControlName="username"
+            placeholder="Entrez votre nom d'utilisateur ici"
+            pattern="[A-Za-z0-9]+"
+            (input)="verifyUsername()"
+            (keydown)="verifyKeyPress($event)"
+            (paste)="(false)"
+        />
+        <button
+            tabindex="-1"
+            #SubmitButton
+            [ngClass]="verifyUsername() ? 'submit-button-enabled' : 'submit-button-disabled'"
+            type="submit"
+            [disabled]="verifyUsername() ? false : true"
+        >
+            Jouer
+        </button>
+        <h1 [ngClass]="{ hidden: !showErrorMessage }">Nom d'utilisateur non disponible</h1>
+    </form>
+</div>

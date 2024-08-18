@@ -1,0 +1,45 @@
+{
+    "root": true,
+    "extends": ["../.eslintrc.json"],
+    "overrides": [
+        {
+            "files": ["*.ts"],
+            "parserOptions": {
+                "project": ["tsconfig.json"],
+                "createDefaultProgram": true
+            },
+            "extends": ["plugin:@angular-eslint/recommended", "plugin:@angular-eslint/template/process-inline-templates"],
+            "rules": {
+                "@angular-eslint/directive-selector": [
+                    "error",
+                    {
+                        "type": "attribute",
+                        "prefix": "app",
+                        "style": "camelCase"
+                    }
+                ],
+                "@angular-eslint/component-selector": [
+                    "error",
+                    {
+                        "type": "element",
+                        "prefix": "app",
+                        "style": "kebab-case"
+                    }
+                ],
+                "@angular-eslint/use-lifecycle-interface": "error" // Warn in @angular-eslint/recommended
+            }
+        },
+        {
+            "files": ["*.html"],
+            "extends": ["plugin:@angular-eslint/template/recommended"],
+            "rules": {}
+        },
+        {
+            "files": ["*.spec.ts"],
+            "rules": {
+                "max-lines": "off", // Needed since we want to keep the test code in one file
+                "max-classes-per-file": "off" // Needed since we create new classes to mock the injected services and components
+            }
+        }
+    ]
+}

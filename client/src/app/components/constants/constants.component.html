@@ -1,0 +1,18 @@
+<div class="constantBox">
+    <p id="section-title">Constantes de jeu</p>
+    <p *ngFor="let constant of gameConstants; let i = index" class="constant flex-row">
+        <span class="constName">{{ constant.name }}: </span>
+        <span class="constTime">
+            <span>
+                <button id="plus-minus" #Minus class="plus-minus" (mousedown)="changeConstant(i, false)" (mouseup)="clear()">-</button
+                >{{ constant.time }} {{ constantUnit }}
+                <button class="plus-minus" (mousedown)="changeConstant(i, true)" (mouseup)="clear()" mo>+</button></span
+            >
+        </span>
+    </p>
+    <span #Error class="error-message" hidden> La valeur dépasse les bornes autorisées. </span>
+    <span class="flex-row">
+        <button #Modify class="button" (click)="modifyConstants()" disabled>Modifier</button>
+        <button #Default class="button" (click)="setDefaultConstants()">Valeurs par défaut</button>
+    </span>
+</div>
